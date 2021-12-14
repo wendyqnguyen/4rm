@@ -105,6 +105,7 @@ updateThought({ params, body }, res) {
       })
       .catch(err => res.json(err));
   },
+  
   // remove reaction
   removeReaction({ params }, res) {
     Thought.findOneAndUpdate(

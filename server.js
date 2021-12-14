@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(require('./routes'));
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/4rm', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/forum', {
 //   useFindAndModify: false,
   useNewUrlParser: true,
   useUnifiedTopology: true
