@@ -1,30 +1,38 @@
 const dateFormat = require('../utils/dateFormat');
 const { Schema, model } = require('mongoose');
 
+const validateEmail = function(email) {
+  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return re.test(email)
+};
+
 const UserSchema = new Schema(
   {
-    userName: {
+    username: {
       type: String,
-      required: true,
-      trim: true
+      required: 'User name is required.',
+      trim: true,
+      unique: true
     },
-    createdBy: {
+    email: {
       type: String,
-      required: true,
-      trim: true
+      trim: true,
+      unique: true,
+      required: 'Email address is required',
+      validate: [validateEmail, 'Please fill a valid email address'],
+      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     },
     createdAt: {
       type: Date,
       default: Date.now,
       get: (createdAtVal) => dateFormat(createdAtVal)
     },
-    size: {
-      type: String,
-      required: true,
-      enum: ['Personal', 'Small', 'Medium', 'Large', 'Extra Large'],
-      default: 'Large'
-    },
-    toppings: [],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ],
     thoughts: [
       {
         type: Schema.Types.ObjectId,
@@ -41,9 +49,9 @@ const UserSchema = new Schema(
   }
 );
 
-// get total count of thoughts and replies on retrieval
-UserSchema.virtual('thoughtCount').get(function() {
-  return this.thoughts.reduce((total, thought) => total + thought.replies.length + 1, 0);
+// get total count of friends on retrieval
+UserSchema.virtual('friendCount').get(function() {
+  return this.thoughts.reduce((total, friend) => total, 0);
 });
 
 const User = model('User', UserSchema);

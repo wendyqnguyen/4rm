@@ -11,9 +11,10 @@ const ReactionSchema = new Schema(
     reactionBody: {
       type: String,
       required: true,
+      max: 280,
       trim: true
     },
-    writtenBy: {
+    username: {
       type: String,
       required: true,
       trim: true
@@ -33,14 +34,14 @@ const ReactionSchema = new Schema(
 
 const ThoughtSchema = new Schema(
   {
-    writtenBy: {
+    username: {
       type: String,
       required: true,
       trim: true
     },
-    thoughtBody: {
+    thoughtText: {
       type: String,
-      required: true,
+      required: 'Thought text is required',
       trim: true
     },
     createdAt: {
@@ -49,7 +50,7 @@ const ThoughtSchema = new Schema(
       get: createdAtVal => dateFormat(createdAtVal)
     },
     // use ReactionSchema to validate data for a reaction
-    replies: [ReactionSchema]
+    reactions: [ReactionSchema]
   },
   {
     toJSON: {
@@ -61,7 +62,7 @@ const ThoughtSchema = new Schema(
 );
 
 ThoughtSchema.virtual('reactionCount').get(function() {
-  return this.replies.length;
+  return this.reactions.length;
 });
 
 const Thought = model('Thought', ThoughtSchema);

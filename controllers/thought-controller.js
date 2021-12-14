@@ -4,7 +4,7 @@ const thoughtController = {
     
 
   // add thought to user
-  addthought({ params, body }, res) {
+  addThought({ params, body }, res) {
     console.log(body);
     Thought.create(body)
       .then(({ _id }) => {
