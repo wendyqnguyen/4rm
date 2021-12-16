@@ -30,7 +30,7 @@ Link: https://github.com/wendyqnguyen/employee-tracker
 ## Usage 
 
 - Navigate to project folder
-- Run command "npm start".  The default work for this server is 3011
+- Run command "npm start".  The default work for this server is 3011. To test the API endpoint, use: http://localhost:3011
 
 
 Demo videos: 
