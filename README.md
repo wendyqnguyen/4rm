@@ -34,8 +34,9 @@ Link: https://github.com/wendyqnguyen/employee-tracker
 
 
 Demo videos: 
-Part 1 - 
-Part 2 - 
+Part 1 - https://watch.screencastify.com/v/x0cxEaSEfEM3emdhTZKw 
+
+Part 2 - https://watch.screencastify.com/v/fwsoNjU2mmXMz1n4pzXm
 
 ## License 
     MIT
