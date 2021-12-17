@@ -18,9 +18,7 @@
 
 4RM is an API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. 4RM uses Express.js for routing, a MongoDB database, and the Mongoose ODM. In addition to using the Express.js  and Mongoose packages, 4rm also uses a JavaScript date library format timestamps.
 
-Link: https://github.com/wendyqnguyen/employee-tracker
-
-<p align="center"><img src="screenshot.jpeg"></p>
+Link: https://github.com/wendyqnguyen/4rm
 
 ## Installation 
 1) Install Node JS via nmp: https://nodejs.org/en/download/package-manager/. 
